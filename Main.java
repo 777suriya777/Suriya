@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.lang.Math;
 public class Main {
     public static void main(String[] args) {
         divisibleByAll(new String[1]);
@@ -1025,5 +1026,73 @@ public class Main {
             }
         }
         System.out.print("Yes");
+    }
+    public static void 24Hours(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int h = sc.nextInt();
+        int m = sc.nextInt();
+        int s = sc.nextInt();
+        sc.nextLine();
+        String ap = sc.next();
+        if(ap.equals("pm")){
+            if(h!=12) h+=12;
+        }
+        System.out.print((h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s));
+    }
+    public static void excel(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int sum = 0;
+        int k = 0;
+        for(int i=s.length()-1;i>=0;i--){
+            sum+= ((int)(Math.pow(26,k)) * (int)(s.charAt(i)-64));
+            k++;
+        }
+        System.out.print(sum);
+    }
+    public static void setBit(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        String bin = Integer.toBinaryString(a);
+        int count = 0;
+        int start = -1;
+        int end = -1;
+        for(int i=bin.length()-1;i>=0;i--){
+            if(s.charAt(i) == '1'){
+                count++;
+                if(start == -1) start = bin.length()-1-i;
+                end = bin.length()-1;
+            }
+        }
+        System.out.print(count+"#"+start+"#"+end);
+    }
+    public static void addingOneToEachBit(String args[]){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i) != '9') System.out.print((char)(s.charAt(i)+1));
+            else  System.out.print(s.charAt(i));
+        }
+    }
+    public static void secondLargestInArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int max = 0;
+        int  maxx1 = 0;
+        for(int i=0;i<len;i++){
+            int num = sc.nextInt();
+            if(i==0){
+                max = num;
+                maxx1 = num;
+            }
+            else{
+                if(max<num){
+                    maxx1 = max;
+                    max = num;
+                }
+                if(max>num && maxx1<num) maxx1 = num;
+            }
+        }
+        System.out.print(maxx1);
     }
 }
