@@ -1095,4 +1095,1141 @@ public class Main {
         }
         System.out.print(maxx1);
     }
+    //--------------------- S3-Pattern-----------------
+    public static void S3pattern1(String[] args){
+        //input = 4
+        //output
+        /*
+        J
+        I H
+        G F E
+        D C B A
+         */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sum = 0;
+        for(int i=1;i<=n;i++){
+            sum+=i;
+        }
+        int c = (64+sum);
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=i;j++){
+                char q = (char)(c);
+                System.out.print(q+" ");
+                c--;
+            }
+            System.out.println();
+        }
+    }
+    public static void S3pattern2(String[] args){
+        //input = 5
+        //output
+        /*
+        * * * * *
+         * * * *
+          * * *
+           * *
+            *
+            *
+           * *
+          * * *
+         * * * *
+        * * * * *
+         */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=n;i>=1;i--){
+            for(int j=n;j>i;j--){
+                System.out.print(" ");
+            }
+            for(int j=i;j>=1;j--) System.out.print("* ");
+            System.out.println();
+        }
+        for(int i=1;i<=n;i++){
+            for(int j=n;j>i;j--){
+                System.out.print(" ");
+            }
+            for(int j=1;j<=i;j++) System.out.print("* ");
+            System.out.println();
+        }
+    }
+    public static void S3pattern3(String[] args){
+        //input = 4
+        //output
+        /*
+         4444444
+         4333334
+         4322234
+         4321234
+         */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println("Value of N: "+n);
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<2*n;j++){
+                if(i==j || i+j == 2*n) System.out.print((n+1-i));
+                else if(i<j && i+j<=2*n) System.out.print((n+1-i));
+                else if(i>j) System.out.print((n+1-j));
+                else System.out.print(j-(n-1));
+            }
+            System.out.println();
+        }
+    }
+    public static void S3pattern4(String[] args){
+        //input = 3
+        //output
+        /*
+         *
+         # #
+         * * *
+         */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        if(n<1) System.out.print("Invalid input");
+        else{
+            for(int i=1;i<=n;i++){
+                for(int j=1;j<=i;j++){
+                    if(i%2==0) System.out.print("# ");
+                    else System.out.print("* ");
+                }
+                System.out.println();
+            }
+        }
+    }
+    public static void S3pattern5(String[] args){
+        //input = 4
+        //output
+        /*
+         1 b c d
+         e 6 g f
+         i j 11 l
+         m n o 16
+         */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int d = 1;
+        int s = 97;
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=n;j++){
+                if(i == j){
+                    System.out.print(d+" ");
+                    d = d + (n+1);
+                    s++;
+                }
+                else{
+                    char c = (char)(s);
+                    System.out.print(c+" ");
+                    s++;
+                }
+            }
+            System.out.println();
+        }
+    }
+    public static void S3pattern6(String[] args){
+        //input = 4
+        //output
+        /*
+              *
+             * *
+            *   *
+           *     *
+            *   *
+             * *
+              *
+         */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int odd = 1;
+        for(int i=1;i<=n;i++){
+            for(int j=n-i;j>=1;j--){
+                System.out.print(" ");
+            }
+            System.out.print("*");
+            if(i == 1) {
+            }
+            else{
+                System.out.print(" ".repeat(odd));
+                odd+=2;
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        odd-=4;
+        for(int i=n-1;i>=1;i--){
+            for(int j=n-i;j>=1;j--){
+                System.out.print(" ");
+            }
+            System.out.print("*");
+            if(i>1){
+                System.out.print(" ".repeat(odd));
+                System.out.print("*");
+                odd-=2;
+            }
+            System.out.println();
+        }
+    }
+    public static void S3pattern7(String args[]){
+        //input  = 7
+        /*
+        ABCDEFGGFEDCBA
+        ABCDEF  FEDCBA
+        ABCDE    EDCBA
+        ABCD      DCBA
+        ABC        CBA
+        AB          BA
+        A            A
+         */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=n;i>=1;i--){
+            for(int j=1;j<=i;j++){
+                System.out.print((char)(64+j));
+            }
+            for(int j=n-i;j>=1;j--){
+                System.out.print(" ");
+            }
+            for(int j=i;j>=1;j--){
+                System.out.print((char)(64+j));
+            }
+            System.out.println();
+        }
+    }
+    public static void determinant(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len1 = sc.nextInt();
+        int len2 = sc.nextInt();
+        int[][] arr1 = new int[len1][len2];
+        for (int i=0;i<len1;i++){
+            for(int j=0;j<len2;j++) arr1[i][j] = sc.nextInt();
+        }
+        System.out.print("Determinant of the matrix ="+coFactor(arr1));
+    }
+    public static int coFactor(int arr[][]){
+        if(arr[0].length == 2){
+            return (arr[0][0]*arr[1][1])-(arr[1][0]*arr[0][1]);
+        }
+        int d = 0;
+        int len = arr[0].length;
+        for(int i=0;i<len;i++){
+            int s = arr[0][i];
+            int[][] n = returnArray(arr,0,i);
+            if(i%2==0){
+                d+= (s*coFactor(n));
+            }
+            else d-= (s*coFactor(n));
+        }
+        return d;
+    }
+    public static int[][] returnArray(int[][] arr,int r,int c){
+        int len = arr[0].length - 1;
+        int[][] n = new int[len][len];
+        int row = 0;
+        int col = 0;
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr.length;j++){
+                if(i == r || j == c){
+                }
+                else{
+                    if(col==len){
+                        col = 0;
+                        row++;
+                    }
+                    n[row][col++] = arr[i][j];
+                }
+            }
+        }
+        return n;
+    }
+    public static void sparseMatrix(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int row = sc.nextInt();
+        int col = sc.nextInt();
+        int check = (row*col)/2;
+        int total = 0;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(sc.nextInt() == 0) total++;
+            }
+        }
+        if(total>=check) System.out.print("The given matrix is Sparse matrix");
+        else System.out.print("The given matrix is not a Sparse matrix");
+    }
+    public static void modifiedArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        int start = len-2;
+        int end = 1;
+        while(start>=0 && end<=len-1){
+            System.out.print(arr[start]+" "+arr[end]+" ");
+            start-=2;
+            end+=2;
+        }
+    }
+    public static void consecutiveDigits(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        boolean flag = true;
+        char c = s.charAt(0);
+        int i=1;
+        int count1 = 1;
+        while(i<s.length()){
+            if(c == s.charAt(i)+1){
+                c = s.charAt(i);
+                count1++;
+            }
+            i++;
+        }
+        i = 1;
+        c = s.charAt(0);
+        int count2 = 1;
+        while(i<s.length()){
+            if(c == s.charAt(i)-1){
+                c = s.charAt(i);
+                count2++;
+            }
+            i++;
+        }
+        if(count1==3 || count2==3) System.out.print("yes");
+        else System.out.print("no");
+    }
+    public static void numberOfMoves(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len+1];
+        int a = 1;
+        for(int i=1;i<=len;i++){
+            for(int j=1;j<=len;j++){
+                if(j%i == 0){
+                    if(arr[j]==0) arr[j] =1;
+                    else arr[j] = 0;
+                }
+            }
+        }
+        int count = 0;
+        for(int i=1;i<=len;i++){
+            if(arr[i] == 1) count++;
+        }
+        System.out.print(count);
+    }
+    public static void addingBinary(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        String b = sc.next();
+        if(a.length()<b.length()){
+            a = "0".repeat(b.length()-a.length()) + a;
+        }
+        else if(a.length()>b.length()){
+            b = "0".repeat(a.length()-b.length()) + b;
+        }
+        a = reverseString(a);
+        b = reverseString(b);
+        String res = "";
+        int borrow = 0;
+        for(int i=0;i<a.length();i++){
+            int q1 = a.charAt(i) - 48;
+            int q2 = b.charAt(i) - 48;
+            int sum = borrow+q1+q2;
+            if(sum == 2){
+                sum = 0;
+                borrow = 1;
+            }
+            else if(sum == 3){
+                sum = 1;
+                borrow = 1;
+            }
+            res = res + sum;
+        }
+        res = res + borrow;
+        res = reverseString(res);
+        int i=0;
+        while (res.charAt(i) == '0') {
+            i++;
+        }
+        System.out.print(res.substring(i));
+    }
+    public static String reverseString(String s){
+        String res = "";
+        for(int i=s.length()-1;i>=0;i--){
+            res+=s.charAt(i);
+        }
+        return res;
+    }
+    public static void slidingWindow(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String[] s = sc.nextLine().replace("[","").replace("]","").split(",");
+        int a = sc.nextInt();
+        for(int i=0;i<=s.length-a;i++){
+            int max = Integer.parseInt(s[i+1]);
+            for(int j=i+1;j<i+a;j++){
+                if(max<Integer.parseInt(s[j])) max = Integer.parseInt(s[j]);
+            }
+            System.out.print(Math.max(Integer.parseInt(s[i]),max));
+            if(i<s.length-a) System.out.print(",");
+        }
+    }
+    public static void longestSubsequence(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        int count = 1;
+        int max = 0;
+        for(int i=1;i<len;i++){
+            if(arr[i]>arr[i-1]) count++;
+            else{
+                if(max<count){
+                    max = count;
+                    count = 1;
+                }
+            }
+        }
+        if(count>max) max = count;
+        System.out.print(max);
+    }
+    public static void depthOfNestedList(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int k = 0;
+        int sum = 0;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i) == '[') k++;
+            else if(s.charAt(i)>=48 && s.charAt(i)<=57){
+                sum = sum + ((s.charAt(i)-48)*i);
+            }
+            else if(s.charAt(i) == ']') k--;
+        }
+        System.out.print(sum);
+    }
+    public static void lastDigitOfPower(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int b = sc.nextInt();
+        int a = sc.nextInt();
+        a = a%10;
+        if(a == 2 || a == 3 || a == 7 || a == 8){
+            int rem = b%4;
+            if(rem == 0){
+                if(a==2||a==8) System.out.print(6);
+                else System.out.print(1);
+            }
+            else System.out.print((int)(Math.pow(a,rem))%10);
+        }
+        else if(a==4||a==9){
+            int rem = b%2;
+            if(rem==0) System.out.print(a==4?6:1);
+            else System.out.print(a);
+        }
+        else System.out.print(a);
+    }
+    public static void rotateArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        int n = sc.nextInt();
+        for(int i=0;i<n;i++){
+            int temp = arr[len-1];
+            for(int j=len-1;j>0;j--) arr[j] = arr[j-1];
+            arr[0] = temp;
+        }
+        for(int i=0;i<len;i++) System.out.print(arr[i]+" ");
+    }
+    public static void intersectionOfArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int l1 = sc.nextInt();
+        int l2 = sc.nextInt();
+        int[] a1 = new int[l1];
+        int[] a2 = new int[l2];
+        for(int i=0;i<l1;i++) a1[i] = sc.nextInt();
+        for(int i=0;i<l2;i++) a2[i] = sc.nextInt();
+        for(int i=0;i<l1;i++){
+            int n = a1[i];
+            for(int j=0;j<l2;j++){
+                if(n == a2[j]){
+                    System.out.print(n+" ");
+                    break;
+                }
+            }
+        }
+    }
+    public static void PinNumber(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] a = new int[len];
+        for(int i=0;i<len;i++){
+            int n = sc.nextInt();
+            n = singleDigit1(n);
+            a[i] = n;
+            if(a[i]%2!=0){
+                System.out.print((char)(96+a[i]));
+            }
+            else System.out.print(a[i]);
+        }
+    }
+    public static int singleDigit1(int num){
+        while(num>9){
+            num = r(num);
+        }
+        return num;
+    }
+    public static void sortedSquareOfArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len=sc.nextInt();
+        int[] a = new int[len];
+        for(int i=0;i<len;i++){
+            int n = sc.nextInt();
+            a[i] = n*n;
+        }
+        Arrays.sort(a);
+        for(int i=0;i<len;i++) System.out.print(a[i]+" ");
+    }
+    public static void minimumDifference(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int k=0;k<t;k++){
+            int len = sc.nextInt();
+            int[] a = new int[len];
+            for(int i=0;i<len;i++) a[i] = sc.nextInt();
+            Arrays.sort(a);
+            int min = 0;
+            for(int i=0;i<len-1;i++){
+                if(i==0){
+                    min = a[i+1]-a[i];
+                }
+                else{
+                    if((a[i+1]-a[i])<min) min = (a[i+1]-a[i]);
+                }
+            }
+            System.out.println(min);
+        }
+    }
+    public static void leaders(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for (int i=0;i<len;i++) arr[i] = sc.nextInt();
+        for(int i=0;i<len;i++){
+            boolean f = true;
+            for(int j=i+1;j<len;j++){
+                if(arr[i]<arr[j]){
+                    f = false;
+                    break;
+                }
+            }
+            if(f) System.out.print(arr[i]+" ");
+        }
+    }
+    public static void zigZagOrder(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        Arrays.sort(arr);
+        for(int i=0;i<len-1;i++){
+            if(i%2!=0){
+                if(arr[i]<arr[i+1]) swap(arr,i,i+1);
+            }
+        }
+        System.out.print("[");
+        for(int i=0;i<len;i++){
+            System.out.print(arr[i]);
+            if(i<len-1) System.out.print(", ");
+        }
+        System.out.print("]");
+    }
+    public static void stringIntegerPair(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        String arr1[] = new String[len];
+        int arr2[] = new int[len];
+        for(int i=0;i<len;i++){
+            arr1[i] = sc.next();
+            arr2[i] = sc.nextInt();
+            sc.nextLine();
+        }
+        char c = sc.next().charAt(0);
+        int sum=0;
+        for(int i=0;i<len;i++){
+            if(arr1[i].charAt(0) == c) sum+=arr2[i];
+        }
+        System.out.print(sum);
+    }
+    public static void leftAndRightRotation(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int r = sc.nextInt();
+        String r1 = "";
+        String s1 = new String(s);
+        String r2 = "";
+        String s2 = new String(s);
+        for(int i=0;i<r;i++){
+            char c = s1.charAt(0);
+            for(int j=1;j<s1.length();j++){
+                r1+=s1.charAt(j);
+            }
+            r1 = r1+c;
+            s1 = r1;
+            r1="";
+        }
+        System.out.println("Left Rotation:\""+s1+"\"");
+        for(int i=0;i<r;i++){
+            char c = s.charAt(s2.length()-1);
+            for(int j=0;j<s2.length()-1;j++){
+                r2+=s2.charAt(j);
+            }
+            r2 =""+c+r2;
+            s2 = r2;
+            r2="";
+        }
+        System.out.println("Right Rotation:\""+s2+"\"");
+    }
+    public static void postalAddress(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String regex = "[0-9]{1,}[a-zA-Z]{1} Sector [A-Za-z]{1}";
+        if(s.matches(regex)) System.out.println("True");
+        else System.out.println("False");
+    }
+    public static void anagrams(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        sc.nextLine();
+        for(int k=0;k<t;k++){
+            String a = sc.next();
+            String b = sc.next();
+            boolean flag = true;
+            for(int i=0;i<a.length();i++){
+                flag = false;
+                for(int j=0;j<b.length();j++){
+                    if(a.charAt(i) == b.charAt(j)){
+                        flag = true;
+                        break;
+                    }
+                }
+                if(!flag){
+                    System.out.println("False");
+                    break;
+                }
+            }
+            if(flag)System.out.println("True");
+        }
+    }
+    public static void jewelsAndStone(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        String a = sc.next();
+        int count = 0;
+        for(int i=0;i<s.length();i++){
+            for(int j=0;j<a.length();j++){
+                if(s.charAt(i) == a.charAt(j)) count++;
+            }
+        }
+        System.out.print(count);
+    }
+    public static void rotationOfEachOther(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        String q = sc.next();
+        char[] c = q.toCharArray();
+        for(int i=0;i<s.length();i++){
+            char temp = c[0];
+            for(int j=0;j<c.length-1;j++){
+                c[j] = c[j+1];
+            }
+            c[c.length-1] = temp;
+            if(s.equals(new String(c))){
+                System.out.print(s+" and "
+                + q +" are rotation of each other");
+                return;
+            }
+        }
+        System.out.print("Not a rotation of each other");
+    }
+    public static void nextDate(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        LocalDate locale = LocalDate.parse(s,formatter);
+        LocalDate nextDay = locale.plusDays(1);
+        String res = nextDay.format(formatter);
+        System.out.print(res);
+    }
+    public static void modifyOnlyDigit(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)>=48 && s.charAt(i)<=57){
+                System.out.print((char)(s.charAt(i) + 1));
+            }
+            else System.out.print(s.charAt(i));
+        }
+    }
+    public static void onesComplement(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        System.out.println("1's complement: ");
+        String ones = "";
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i) == '0') ones+= "1";
+            else ones+="0";
+        }
+        System.out.print(ones);
+        System.out.println("2's complement: "+addingBinary(ones,"1"));
+    }
+    public static String addingBinary(String a,String b){
+        Scanner sc = new Scanner(System.in);
+        if(a.length()<b.length()){
+            a = "0".repeat(b.length()-a.length()) + a;
+        }
+        else if(a.length()>b.length()){
+            b = "0".repeat(a.length()-b.length()) + b;
+        }
+        a = reverseString(a);
+        b = reverseString(b);
+        String res = "";
+        int borrow = 0;
+        for(int i=0;i<a.length();i++){
+            int q1 = a.charAt(i) - 48;
+            int q2 = b.charAt(i) - 48;
+            int sum = borrow+q1+q2;
+            if(sum == 2){
+                sum = 0;
+                borrow = 1;
+            }
+            else if(sum == 3){
+                sum = 1;
+                borrow = 1;
+            }
+            else borrow = 0;
+            res = res + sum;
+        }
+        res = res + borrow;
+        res = reverseString(res);
+        int i=0;
+        while (res.substring(i).length()>a.length()&&res.charAt(i) == '0') {
+            i++;
+        }
+        return res.substring(i);
+    }
+    public static void extractingSecondsFromString(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String[] s = sc.nextLine().split(" ");
+        String regex = "[0-9]{2}:[0-9]{2}:[0-9]{2}:";
+        String res = "";
+        for(int i=0;i<s.length;i++){
+            if(s[i].matches(regex)){
+                res = s[i];
+                break;
+            }
+        }
+        System.out.println(res.split(":")[2]);
+    }
+    public static void cricket(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int b1 = 0;
+        int b2 = 0;
+        int bow = 0;
+        int total = 0;
+        boolean bat1 = true;
+        boolean bat2 = false;
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            if(c == 'Y'){
+                total++;
+                bow++;
+            }
+            else if(c == '.') continue;
+            else if(c>=48 && c<=57){
+                if(bat1){
+                        int n = c - 48;
+                        if(n%2!=0){
+                            b1+=n;
+                            total+=n;
+                            bow+=n;
+                            bat2 = true;
+                            bat1 = false;
+                        }
+                        else{
+                            b1+=n;
+                            total+=n;
+                            bow+=n;
+                        }
+                }
+                else {
+                    int n = c - 48;
+                    if(n%2!=0){
+                        b2+=n;
+                        total+=n;
+                        bow+=n;
+                        bat1 = true;
+                        bat2 = false;
+                    }
+                    else{
+                        b2+=n;
+                        total+=n;
+                        bow+=n;
+                    }
+                }
+            }
+            else{
+                System.out.print("Invalid");
+                return;
+            }
+        }
+        System.out.println("BATSMAN 1: "+b1);
+        System.out.println("BATSMAN 2: "+b2);
+        System.out.println("BOWLER: "+total);
+    }
+    public static void variableTypes(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s[] = sc.nextLine().split(" ");
+        int string = 0;
+        int integer = 0;
+        int fl = 0;
+        for(int i=0;i<s.length;i++){
+            if(s[i].matches("[0-9]+")) integer++;
+            else if(s[i].matches("[0-9]+\\.[0-9]+")) fl++;
+            else string++;
+        }
+        System.out.println("string " + string);
+        System.out.println("integer " + integer);
+        System.out.println("double " + fl);
+    }
+    public static void longestPalindrome(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int sum = 0;
+        boolean f = true;
+        for(int i=0;i<s.length();i++){
+            boolean flag = true;
+            int count = 0;
+            for(int j=0;j<i;j++){
+                if(s.charAt(i) == s.charAt(j)){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                for(int j=i;j<s.length();j++){
+                    if(s.charAt(i) == s.charAt(j)) count++;
+                }
+            }
+            if(count>1){
+                if(count%2==0) sum+=count;
+                else sum += (count-1);
+            }
+            else if(count == 1 && f){
+                sum++;
+                f = false;
+            }
+        }
+        System.out.println(sum);
+    }
+    public static void replaceStringWithAnotherString(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        sc.nextLine();
+        for(int k=0;k<t;k++){
+            String s = sc.nextLine();
+            String q = sc.nextLine();
+            for(int i=0;i<q.length();i++){
+                s = s.replaceAll(""+q.charAt(i),"");
+            }
+            System.out.println(s);
+        }
+    }
+    public static void commonPrefix(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String[] s = sc.nextLine().split(" ");
+        int a[]  = new int[s.length];
+        for(int i=0;i<s.length;i++){
+            a[i] = s[i].length();
+        }
+        Arrays.sort(a);
+        int len = a[0];
+        String t = s[0];
+        for(int i=0;i<t.length();i++){
+            boolean flag = true;
+            for(int j=1;j<s.length;j++){
+                if(t.charAt(i) != s[j].charAt(i)){
+                    flag = false;
+                    return;
+                }
+            }
+            if(flag) System.out.print(t.charAt(i));
+        }
+    }
+    public static void smallestNumberByRemovingDigits(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int n = sc.nextInt();
+        if(s.length() == n){
+            System.out.print(0);
+            return;
+        }
+        int smallest = 0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<s.length();j++){
+                if(j == 0){
+                    smallest = Integer.parseInt(s.substring(1));
+                }
+                else if(j<s.length()-1){
+                    String q = s.substring(0,j) + s.substring(j+1);
+                    int now  = Integer.parseInt(q);
+                    if(smallest>now) smallest = now;
+                }
+                else {
+                    String q = s.substring(0,j);
+                    int now  = Integer.parseInt(q);
+                    if(smallest>now) smallest = now;
+                }
+            }
+            s = ""+smallest;
+        }
+        System.out.print(s);
+    }
+    public static void reverseEachStringInSequence(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String[] s = sc.nextLine().split(" ");
+        for(int i=0;i<s.length;i++){
+            s[i] = s[i].toLowerCase();
+            char[] temp = s[i].toCharArray();
+            int start = 0;
+            int end = temp.length-1;
+            while(start<end){
+                while(Character.isDigit(temp[start])){
+                    start++;
+                    if(start>=temp.length) break;
+                }
+                while(Character.isDigit(temp[end])){
+                    end--;
+                    if(end<0) break;
+                }
+               if(start<end) swap(temp,start,end);
+               start++;
+               end--;
+            }
+            String res = new String(temp);
+            res = res.substring(0,1).toUpperCase()
+                    + res.substring(1);
+            System.out.print(res+" ");
+        }
+    }
+    public static void swap(char[] c,int i,int j){
+        char m = c[i];
+        c[i] = c[j];
+        c[j] = m;
+    }
+    public static void substringBetweenTwoEqualCharacter(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int max = 0;
+        boolean flag = false;
+        boolean f;
+        for(int i=0;i<s.length();i++){
+            f = true;
+            int count = 0;
+            for(int j=0;j<i;j++){
+                if(s.charAt(i) == s.charAt(j)){
+                    f = false;
+                    break;
+                }
+            }
+            if(f){
+                if(s.substring(i+1).contains(""+s.charAt(i))){
+                    int k = i+1;
+                    while(s.charAt(k) != s.charAt(i)){
+                        count++;
+                        k++;
+                    }
+                }
+                if(i==0) max = count;
+                else {
+                    if(max<count) max = count;
+                }
+            }
+        }
+        System.out.print(max);
+    }
+    public static void minimumDenomination(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int k=0;k<t;k++){
+            int n = sc.nextInt();
+            if(n<1 || n>10000){
+                System.out.print("Invalid Input");
+            }
+            else{
+                int fiveH = 0;
+                int H = 0;
+                int fifty = 0;
+                int twenty = 0;
+                int ten = 0;
+                int five = 0;
+                int two = 0;
+                int one = 0;
+                while(n>0){
+                    while(n>=500){
+                        fiveH = n/500;
+                        n = n%500;
+                    }
+                    while(n>=100){
+                        H = n/100;
+                        n = n%100;
+                    }
+                    while(n>=50){
+                        fifty = n/50;
+                        n = n%50;
+                    }
+                    while(n>=20){
+                        twenty = n/20;
+                        n = n%20;
+                    }
+                    while(n>=10){
+                        ten = n/10;
+                        n = n%10;
+                    }
+                    while(n>=5){
+                        five = n/5;
+                        n = n%5;
+                    }
+                    while(n>=2){
+                        two = n/2;
+                        n = n%2;
+                    }
+                    while(n>=1){
+                        one = n/1;
+                        n = n%1;
+                    }
+                }
+                System.out.println("500: "+fiveH);
+                System.out.println("100: "+H);
+                System.out.println("50: "+fifty);
+                System.out.println("20: "+twenty);
+                System.out.println("10: "+ten);
+                System.out.println("5: "+five);
+                System.out.println("2: "+two);
+                System.out.println("1: "+one);
+            }
+        }
+    }
+    public static void maximumTriplet(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        int maxSum = 0;
+        for(int i=0;i<len-2;i++){
+            int sum = arr[i];
+            int max1 = -1;
+            int max2 = -1;
+            for(int j=i+1;j<len-1;j++){
+                if(arr[i]<arr[j]){
+                    if(j == i+1) max1 = arr[j];
+                    else if(arr[j]>max1) max1 = arr[j];
+                }
+            }
+            if(max1 == -1) continue;
+            for(int k=i+2;k<len;k++){
+                if(max1<arr[k]){
+                    if(k == i+2) max2 = arr[k];
+                    else if(arr[k]>max2) max2 = arr[k];
+                }
+            }
+            if(max2 == -1) continue;
+            int total = sum + max1 + max2;
+            if(i==0){
+                maxSum = total;
+            }
+            else if(total>maxSum) maxSum = total;
+        }
+        System.out.print(maxSum);
+    }
+    public static void segregate1And0(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        int start = 0;
+        int end = len - 1;
+        for(int i=0;i<len;i++){
+            int n = sc.nextInt();
+            if(n == 1){
+                arr[end] = n;
+                end--;
+            }
+            else if(n==0){
+                arr[start] = n;
+                start++;
+            }
+            else{
+                System.out.print("Invalid Input");
+                return;
+            }
+        }
+        for(int i=0;i<len;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public static void tripletZero(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        boolean flag = false;
+        for(int i=0;i<len;i++)arr[i] = sc.nextInt();
+        for(int i=0;i<len-2;i++){
+            for(int j=i+1;j<len-1;j++){
+                for(int k=j+1;k<len;k++){
+                    if(arr[i]+arr[j]+arr[k] == 0){
+                        flag = true;
+                        System.out.println("Elements are "
+                        +arr[i]+" "+arr[j]+" "+arr[k]);
+                    }
+                }
+            }
+        }
+        if(!flag) System.out.print("No Elements Found");
+    }
+    public static void pivotListValue(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        int p = sc.nextInt();
+        ArrayList<Integer> l1 = new ArrayList<>(len);
+        ArrayList<Integer> l2 = new ArrayList<>(len);
+        ArrayList<Integer> l3 = new ArrayList<>(len);
+        for(int i=0;i<len;i++){
+            if(arr[i]>p) l3.add(arr[i]);
+            else if(arr[i]<p) l1.add(arr[i]);
+            else l2.add(arr[i]);
+        }
+        l1.sort(Comparator.reverseOrder());
+        l3.sort(Comparator.reverseOrder());
+        for(Integer i : l1){
+            System.out.println(i);
+        }
+        if(!l2.isEmpty()){
+            for(Integer i:l2) System.out.println(p);
+        }
+        for(Integer i : l3) System.out.println(i);
+    }
+    public static void maximumSumOfConsecutive(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        int n = sc.nextInt();
+        int maxSum = 0;
+        for(int i=0;i<=len-n;i++){
+            int sum = 0;
+            for(int j = i;j<i+n;j++){
+                sum+=arr[j];
+            }
+            if(i==0) maxSum = sum;
+            else if(sum>maxSum)maxSum = sum;
+        }
+        System.out.print(maxSum);
+    }
 }
