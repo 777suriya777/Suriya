@@ -1058,7 +1058,7 @@ public class Main {
         int start = -1;
         int end = -1;
         for(int i=bin.length()-1;i>=0;i--){
-            if(s.charAt(i) == '1'){
+            if(bin.charAt(i) == '1'){
                 count++;
                 if(start == -1) start = bin.length()-1-i;
                 end = bin.length()-1;
