@@ -2369,4 +2369,27 @@ public class Main {
             }
         }
     }
+    public static void rooneyRonaldo(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int s = sc.nextInt();
+        sc.nextLine();
+        String[][] a = new String[s][2];
+        for(int i=0;i<s;i++){
+            a[i][0] = sc.next();
+            a[i][1] = sc.next();
+        }
+        String q = sc.next();
+        int count = 0;
+        ArrayList<String> w = new ArrayList<>();
+        for(int i =0;i<s;i++){
+            if(a[i][1].equals(q)) w.add(a[i][0]);
+        }
+        for(int i =0;i<s;i++){
+            String o = w.get(i);
+            for(int j=0;j<s;j++){
+                if(a[j][1].equals(o)) count++:
+            }
+        }
+        System.out.print(count);
+    }
 }
