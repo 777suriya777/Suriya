@@ -1363,6 +1363,19 @@ public class Main {
         }
     }
     public static void S3pattern9(String[] args){
+        /*
+        *         *
+         *       *
+          *     *
+           *   *
+            * *
+             *
+            * *
+           *   *
+          *     *
+         *       *
+        *         *
+        */
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         for(int i=1;i<2*n;i++){
