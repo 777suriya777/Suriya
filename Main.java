@@ -2232,4 +2232,141 @@ public class Main {
         }
         System.out.print(maxSum);
     }
+    //------------------------- S4 ---------------------------------------------
+     public static void secondFrequentCharacter(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int a = 0;
+        int b = 0;
+        char a1 = 'a';
+        char b1 = 'b';
+        for(int i=0;i<s.length();i++){
+            boolean flag = true;
+            int count = 0;
+            for(int j=0;j<i;j++){
+                if(s.charAt(i) == s.charAt(j)){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                for(int j=i;j<s.length();j++) {
+                    if (s.charAt(i) == s.charAt(j)) {
+                        count++;
+                    }
+                }
+                if(i == 0){
+                    a = count;
+                    a1 = s.charAt(i);
+                }
+                else{
+                    if(count>a){
+                        b = a;
+                        a = count;
+                        b1 = a1;
+                        a1 = s.charAt(i);
+                    }
+                    else if(count>b){
+                        b = count;
+                        b1 = s.charAt(i);
+                    }
+                }
+            }
+        }
+        if(b>1)System.out.print("Second most frequent character is "+b1);
+        else System.out.print("No Second most frequent character");
+    }
+    public static void master(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String dig =  "^\\D[^aeiouAEIOU]\\d+[AEIOU][A-Z]*\\d+[\\{\\}\\[\\]]";
+        boolean flag = true;
+        if(s.matches(dig)){
+            System.out.print("YES ");
+        }
+        else{
+            System.out.print("NO ");
+            flag = false;
+        }
+        s = s.substring(2,s.length()-1);
+        String q[] = s.split("[A-Z]+");
+        if(flag){
+            int res = Integer.parseInt(q[0])+
+                    Integer.parseInt(q[1]);
+            System.out.print(res);
+        }
+        else{
+            int res = Integer.parseInt(q[0])-
+                    Integer.parseInt(q[1]);
+            System.out.print(res);
+        }
+    }
+    public static void reverseTheStringWithSpaces(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        char[] c = s.toCharArray();
+        int start = 0;
+        int end = c.length-1;
+        while(start<end){
+            while((c[start]<48||c[start]>57)
+            &&(c[start]<65||c[start]>90)&&(c[start]<97||c[start]>122)){
+                start++;
+            }
+            while((c[end]<48||c[end]>57)
+                    &&(c[end]<65||c[end]>90)&&(c[end]<97||c[end]>122)){
+                end--;
+            }
+            if(start<end){
+                swap(c,start,end);
+                start++;
+                end--;
+            }
+        }
+        String q = new String(c);
+        System.out.print(q);
+    }
+    public static void validParenthesis(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int test= sc.nextInt();
+        sc.nextLine();
+        for(int k=0;k<test;k++){
+            String s = sc.nextLine();
+            if(s.isEmpty()){
+                System.out.println("True");
+            }
+            else{
+                boolean flag = true;
+                for(int i=0;i<s.length()/2;i++){
+                    char c = s.charAt(s.length() - 1 - i);
+                    if(s.charAt(i) == '('){
+                        if(c != ')'){
+                            flag = false;
+                            System.out.println("False");
+                            break;
+                        }
+                    }
+                    else if(s.charAt(i) == '['){
+                        if(c != ']'){
+                            flag = false;
+                            System.out.println("False");
+                            break;
+                        }
+                    }
+                    else if(s.charAt(i) == '{'){
+                        if(c != '}'){
+                            flag = false;
+                            System.out.println("False");
+                            break;
+                        }
+                    }
+                    else {
+                        flag = false;
+                        System.out.println("False");
+                        break;
+                    }
+                }
+                if(flag) System.out.println("True");
+            }
+        }
+    }
 }
