@@ -2244,6 +2244,86 @@ public class Main {
             }
         }
     }
+    public static void alternateRotate(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        sc.nextLine();
+        for(int k=0;k<t;k++){
+            String s = sc.nextLine();
+            int n = sc.nextInt();
+            sc.nextLine();
+            if(k%2==0){
+                for(int p=0;p<n;p++){
+                    String q = s.substring(0,1);
+                    s = s.substring(1);
+                    s = s+q;
+                }
+            }
+            else{
+                for(int p=0;p<n;p++){
+                    String q = s.substring(s.length()-1);
+                    s = s.substring(0,s.length()-1);
+                    s = q+s;
+                }
+            }
+            System.out.println(s);
+        }
+    }
+    public static void reverseStringExceptSpecialCharacter(String[] args){
+        Scanner sc = new Scanner(System.in);
+        char[] c = sc.nextLine().toCharArray();
+        int start = 0;
+        int end = c.length-1;
+        while (start<end){
+            while(!Character.isAlphabetic(c[start])) start++;
+            while(!Character.isAlphabetic(c[end])) end--;
+            if(start<end){
+                swap(c,start,end);
+                start++;
+                end--;
+            }
+        }
+        String q = new String(c);
+        System.out.print(q);
+    }
+    public static void swap(char[] c,int i,int j){
+        char t = c[i];
+        c[i] = c[j];
+        c[j] = t;
+    }
+    public static void policeAndThief(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        sc.nextLine();
+        char[][] q = new char[n][n];
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                q[i][j] = sc.next().charAt(0);
+            }
+        }
+        int count = 0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(q[i][j] == 'T'){
+                    if(search(q[i],j,k)) count++;
+                }
+            }
+        }
+        System.out.print(count);
+    }
+    public static boolean search(char[] c,int j,int k){
+        for(int i=0;i<c.length;i++){
+            if(c[i] == 'P'){
+                if(Math.abs(i-j)<=k){
+                    c[i] = 'N';
+                    c[j] = 'N';
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     //------------------------- S4 ---------------------------------------------
      public static void secondFrequentCharacter(String[] args){
         Scanner sc = new Scanner(System.in);
