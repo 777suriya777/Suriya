@@ -1115,6 +1115,31 @@ public class Main {
             System.out.println(count/2);
         }
     }
+    public static void primeAndFibonacci(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int count = 0;
+        int p = 2;
+        int f1 = 0;
+        int f2 = 1;
+        while(count<n){
+            count++;
+            while(!isPrime(p)) p++;
+            System.out.print(p+" ");
+            p++;
+                System.out.print(f1+" ");
+                int temp = f1;
+                f1 = f2;
+                f2 = temp+f1;
+        }
+    }
+    public static boolean isPrime(int a){
+        if(a == 2 || a == 3) return true;
+        for(int i=2;i<=a/2;i++){
+            if(a%i==0) return false;
+        }
+        return true;
+    }
     //--------------------- S3-Pattern-----------------
     public static void S3pattern1(String[] args){
         //input = 4
