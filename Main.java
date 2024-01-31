@@ -1386,6 +1386,23 @@ public class Main {
             System.out.println();
         }
     }
+    public static void indicesOfSumInArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        int target = sc.nextInt();
+        for(int i=0;i<len;i++){
+            for(int j=i+1;j<len;j++){
+                if(arr[i]+arr[j] == target){
+                    System.out.println("Index1: "+i);
+                    System.out.println("Index2: "+j);
+                    return;
+                }
+            }
+        }
+        System.out.println("No two sum solution");
+    }
     public static void spiralMatrix(String[] args){
         Scanner sc = new Scanner(System.in);
         int r = sc.nextInt();
@@ -1649,6 +1666,26 @@ public class Main {
             arr[0] = temp;
         }
         for(int i=0;i<len;i++) System.out.print(arr[i]+" ");
+    }
+    public static void median(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++){
+            arr[i] = sc.nextInt();
+            if(i==0)System.out.println(arr[i]);
+            else{
+                if(i%2!=0){
+                    int m = (i)/2;
+                    int median = (arr[m]+arr[m+1])/(i+1);
+                    System.out.println(median);
+                }
+                else{
+                    int m = i/2;
+                    System.out.println(arr[m]/(i+1));
+                }
+            }
+        }
     }
     public static void intersectionOfArray(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -2105,6 +2142,22 @@ public class Main {
         }
         System.out.print(s);
     }
+    public static void largeValuedOddInteger(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int max  = 0;
+        boolean f = false;
+        for(int i=s.length();i>0;i--){
+            String q = s.substring(0,i) + s.substring(i+1);
+            int k = Integer.parseInt(q);
+            if(k%2!=0){
+                f = true;
+                if(max<k) max = k;
+            }
+        }
+        if(f) System.out.print(max);
+        else System.out.print("There are no odd numbers in "+s);
+    }
     public static void reverseEachStringInSequence(String[] args){
         Scanner sc = new Scanner(System.in);
         String[] s = sc.nextLine().split(" ");
@@ -2438,6 +2491,24 @@ public class Main {
             }
         }
         return false;
+    }
+    public static void temperature(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        for(int i=0;i<len;i++){
+            boolean flag = false;
+            for(int j=i+1;j<len;j++){
+                if(arr[i]<arr[j]){
+                    System.out.print(j-i);
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag) System.out.print(0);
+            if(i<len-1) System.out.print(",");
+        }
     }
     //------------------------- S4 ---------------------------------------------
      public static void secondFrequentCharacter(String[] args){
