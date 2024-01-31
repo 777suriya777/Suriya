@@ -565,7 +565,7 @@ public class Main {
         for(int i=0;i<test;i++){
             int num = sc.nextInt();
             int prime = 2;
-            for(int j=num;j>=2;j--){
+            for(int j=num-1;j>=2;j--){
                 boolean flag = true;
                 for(int k = 2;k<=j/2;k++){
                     if(j%k == 0){
@@ -575,7 +575,7 @@ public class Main {
                 }
                 if(flag){
                     prime = j;
-                    System.out.print(prime);
+                    System.out.println(prime);
                     break;
                 }
             }
@@ -1094,6 +1094,26 @@ public class Main {
             }
         }
         System.out.print(maxx1);
+    }
+    public static void exactlyTwo(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int k=0;k<t;k++){
+            int n = sc.nextInt();
+            sc.nextLine();
+            String[] s = new String[n];
+            for(int i=0;i<n;i++) s[i] = sc.next();
+            int count = 0;
+            int coc;
+            for(int i=0;i<n;i++){
+                coc = 0;
+                for(int j=0;j<n;j++){
+                    if(s[i].equals(s[j])) coc++;
+                }
+                if(coc == 2 ) count++;
+            }
+            System.out.println(count/2);
+        }
     }
     //--------------------- S3-Pattern-----------------
     public static void S3pattern1(String[] args){
