@@ -1331,12 +1331,69 @@ public class Main {
                 System.out.print((char)(64+j));
             }
             for(int j=n-i;j>=1;j--){
-                System.out.print(" ");
+                System.out.print("  ");
             }
             for(int j=i;j>=1;j--){
                 System.out.print((char)(64+j));
             }
             System.out.println();
+        }
+    }
+    public static void S3pattern8(String[] args){
+        /*
+          a
+         aaa
+        aaaaa
+         aaa
+          a
+        */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        sc.nextLine();
+        char c = sc.next().charAt(0);
+        for(int i=1;i<=n;i++){
+            for(int j=n-i;j>=1;j--) System.out.print(" ");
+            for(int j=1;j<=(2*i)-1;j++) System.out.print(c);
+            System.out.println();
+        }
+        for(int i=n-1;i>=1;i--){
+            for(int j=1;j<=n-i;j++) System.out.print(" ");
+            for(int j=(2*i)-1;j>=1;j--) System.out.print(c);
+            System.out.println();
+        }
+    }
+    public static void S3pattern9(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=1;i<2*n;i++){
+            for(int j=1;j<2*n;j++){
+                if(i==j || i+j == 2*n) System.out.print("*");
+                else System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void spiralMatrix(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+        int[][] arr = new int[r][c];
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++) arr[i][j] = sc.nextInt();
+        }
+        int right = 0;
+        int left = c-1;
+        int top = 0;
+        int down = r-1;
+        while(right<=left && top<=down){
+            for(int i=right;i<=left;i++) System.out.print(arr[top][i]+" ");
+            top++;
+            for(int i=top;i<=down;i++) System.out.print(arr[i][down]+" ");
+            left--;
+            for(int i=left;i>=right;i--) System.out.print(arr[down][i]+" ");
+            down--;
+            for(int i=down;i>=top;i--) System.out.print(arr[i][right]+" ");
+            right++;
         }
     }
     public static void determinant(String[] args){
