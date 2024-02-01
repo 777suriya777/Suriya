@@ -1867,7 +1867,7 @@ public class Main {
         }
         System.out.println("Left Rotation:\""+s1+"\"");
         for(int i=0;i<r;i++){
-            char c = s.charAt(s2.length()-1);
+            char c = s2.charAt(s2.length()-1);
             for(int j=0;j<s2.length()-1;j++){
                 r2+=s2.charAt(j);
             }
