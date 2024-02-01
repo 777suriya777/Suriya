@@ -2186,6 +2186,13 @@ public class Main {
             if(flag) System.out.print(t.charAt(i));
         }
     }
+    public static void removingLeadingZero(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int i = 0;
+        while(s.charAt(i) == '0') i++;
+        System.out.print(s.substring(i));
+    }
     public static void smallestNumberByRemovingDigits(String[] args){
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
@@ -2581,6 +2588,34 @@ public class Main {
             }
             if(!flag) System.out.print(0);
             if(i<len-1) System.out.print(",");
+        }
+    }
+    public static void sortingString(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String[] s = sc.nextLine().split(" ");
+        Arrays.sort(s);
+        for(String q : s) System.out.print(q+" "); 
+    }
+    public static void extractingNumberExcept9(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        sc.nextLine();
+        for(int l=0;l<t;l++){
+            String[] s = sc.nextLine().split(" ");
+            boolean f = false;
+            for(int i=0;i<s.length;i++){
+                s[i] = s[i].replaceAll("[^0-9]","");
+                if(s[i].isEmpty()) continue;
+                else{
+                    if(s[i].contains("9")) continue;
+                    else{
+                        System.out.print(s[i]+" ");
+                        f = true;
+                    }
+                }
+            }
+            if(!f) System.out.print(-1);
+            System.out.println();
         }
     }
     //------------------------- S4 ---------------------------------------------
