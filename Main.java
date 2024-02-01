@@ -1207,6 +1207,18 @@ public class Main {
         for(int i=1;i<=n;i++) res = res * i;
         return res;
     }
+    public static void insertAtPosition(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int[] arr = new int[11];
+        for(int i=0;i<10;i++) arr[i] = sc.nextInt();
+        int p = sc.nextInt();
+        int ele = sc.nextInt();
+        for(int i=10;i>=p;i--){
+            arr[i] = arr[i-1];
+        }
+        arr[p-1] = ele;
+        for(int i=0;i<11;i++) System.out.print(arr[i]+" ");
+    }
     //--------------------- S3-Pattern-----------------
     public static void S3pattern1(String[] args){
         //input = 4
