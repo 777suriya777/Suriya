@@ -247,6 +247,16 @@ public class Main {
         System.out.print(num-rem);
     }
 
+    public static void oddItemsInArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        System.out.print("Odd items of the array: ");
+        for(int i=0;i<len;i++){
+            int num = sc.nextInt();
+            if(num%2!=0) System.out.print(num+" ");
+        }
+    }
+
     public static void armstrongNumber(String[] args){
         Scanner sc = new Scanner(System.in);
         String n = sc.next();
@@ -794,7 +804,7 @@ public class Main {
         int len = sc.nextInt();
         int[] arr = new int[len];
         for(int i=0;i<len;i++) arr[i] = sc.nextInt();
-        int unique = 0;
+        int unique = Integer.MAX_VALUE;
         boolean flag1 = false;
         for(int i=0;i<len;i++){
             boolean flag = true;
@@ -806,11 +816,12 @@ public class Main {
                 }
             }
             if(flag){
-                System.out.print(arr[i]+" ");
+                if(unique>arr[i]) unique = arr[i];
                 flag1 = true;
             }
         }
-        if(flag1) System.out.print("No unique elements");
+        if(!flag1) System.out.print("No unique elements");
+        else System.out.print(unique);
     }
     public static void findingRepeatingElements(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -1139,6 +1150,62 @@ public class Main {
             if(a%i==0) return false;
         }
         return true;
+    }
+    public static void decreasingPositionInArrays(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        for(int i=0;i<len;i++){
+            int num = sc.nextInt();
+            arr[i] = num;
+        }
+        for(int i=0;i<len-1;i++){
+            if(arr[i]>arr[i+1]){
+                System.out.print(i+2);
+                return;
+            }
+        }
+        System.out.print(-1);
+    }
+    public static void lengthBetweenRepeatingNumber(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int a = sc.nextInt();
+        int start = s.indexOf(""+a);
+        int end = s.lastIndexOf(""+a);
+        System.out.print(s.substring(start+1,end).length());
+    }
+    public static void addingTwoArrays(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int arr1[] = new int[len];
+        int arr2[] = new int[len];
+        for(int i=0;i<len;i++) arr1[i] = sc.nextInt();
+        for(int i=0;i<len;i++) arr2[i] = sc.nextInt();
+        for(int i=0;i<len;i++) System.out.print((arr1[i]+arr2[i])+" ");
+    }
+    public static void strongNumbers(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int l = sc.nextInt();
+        for(int i=1;i<=l;i++){
+            if(isStrong(i)) System.out.print(i+" ");
+        }
+    }
+    public static boolean isStrong(int a){
+        int sum = 0;
+        int n = a;
+        while(n>0){
+            int rem = n%10;
+            int f = fact(rem);
+            sum +=f;
+            n/=10;
+        }
+        return a==sum;
+    }
+    public static int fact(int n){
+        int res = 1;
+        for(int i=1;i<=n;i++) res = res * i;
+        return res;
     }
     //--------------------- S3-Pattern-----------------
     public static void S3pattern1(String[] args){
