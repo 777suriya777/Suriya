@@ -2957,4 +2957,32 @@ public class Main {
         }
         System.out.print(arr[n]);
     }
+    public static void ascendingEvenDescendingOdd(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int arr[] = new int[len];
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        Arrays.sort(arr);
+        ArrayList<Integer> l1 = new ArrayList<>(len);
+        ArrayList<Integer> l2 = new ArrayList<>(len);
+        for(int i=0;i<len;i++){
+            if(arr[i]%2 == 0) l1.add(arr[i]);
+        }
+        for(int i=len-1;i>=0;i--){
+            if(arr[i]%2 != 0) l2.add(arr[i]);
+        }
+        int small = l1.size()<l2.size()?l1.size():l2.size();
+            int i;
+        for(i=0;i<small;i++){
+            System.out.print(l2.get(i) + " " + l1.get(i)+" ");
+        }
+        while(i<l1.size()){
+            System.out.print(l1.get(i)+" ");
+            i++;
+        }
+        while(i<l2.size()){
+            System.out.print(l2.get(i)+" ");
+            i++;
+        }
+    }
 }
