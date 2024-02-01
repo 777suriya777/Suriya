@@ -2747,4 +2747,79 @@ public class Main {
         }
         System.out.println(count);
     }
+    public static void CstyleInnitialization(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String[] s = sc.nextLine().split(";");
+        System.out.println("Integers");
+        for(int i=0;i<s.length;i++){
+            if(s[i].contains("int")){
+                s[i] = s[i].replace("int ","");
+                String[] q = s[i].split(",");
+                for(String d : q){
+                    if(d.length()==1) System.out.println(d+"=junk");
+                    else System.out.println(d);
+                }
+            }
+        }
+        System.out.println("Characters");
+        for(int i=0;i<s.length;i++){
+            if(s[i].contains("char")){
+                s[i] = s[i].replace("char ","");
+                String[] q = s[i].split(",");
+                for(String d : q){
+                    if(d.length()==1) System.out.println(d+"=junk");
+                    else System.out.println(d);
+                }
+            }
+        }
+    }
+    public static void dictionary(String[] args){
+        Scanner sc = new Scanner(System.in);
+        char[] a = sc.next().toCharArray();
+        char[] b = sc.next().toCharArray();
+        String c = sc.nextLine();
+        String k = new String(a)+" ";
+        for(int i=b.length-1;i>=0;i--){
+            a[i] = b[i];
+            String q = new String(a);
+            if(c.contains(q)){
+                k += q+" ";
+            }
+            else{
+                System.out.print("null");
+                return;
+            }
+        }
+        System.out.print(k);
+    }
+    public static void highFrequencyWords(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String regex = "[^a-zA-Z ]";
+        String[] s = sc.nextLine().replaceAll(regex,"").split(" ");
+        int max = 0;
+        String a = "";
+        for(int i=0;i<s.length;i++){
+            boolean flag = true;
+            int count = 0;
+            for(int j=0;j<i;j++){
+                if(s[i].equals(s[j])){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                for(int j=i;j<s.length;j++){
+                    if(s[i].equals(s[j])){
+                    count++;
+                   }
+                }
+                if(max<count){
+                    max = count;
+                    a = s[i];
+                }
+            }
+        }
+        if(max == 1) System.out.print("None");
+        else System.out.print(a);
+    }
 }
