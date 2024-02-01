@@ -2822,4 +2822,31 @@ public class Main {
         if(max == 1) System.out.print("None");
         else System.out.print(a);
     }
+    public static void largestElementBetweenPreviousAndNext(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int len = sc.nextInt();
+        int[] arr = new int[len];
+        int[] res = new int[len];
+        if(len==2){
+            System.out.print(-1);
+            return;
+        }
+        for(int i=0;i<len;i++) arr[i] = sc.nextInt();
+        int n = 0;
+        int max = 0;
+        for(int i=0;i<len;i++){
+            if(i==0){
+                res[i] = (arr[len-1]*arr[i+1]);
+            }
+            else if(i==len-1){
+                res[i] = (arr[i-1]*arr[0]);
+            }
+            else res[i] = (arr[i-1]*arr[i+1]);
+            if(max<res[i]){
+            max = res[i];
+            n = i;
+        }
+        }
+        System.out.print(arr[n]);
+    }
 }
