@@ -1386,6 +1386,20 @@ public class Main {
             System.out.println();
         }
     }
+    
+    public static void largestOddNumberInAString(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String res = "";
+        for(int i=s.length()-1;i>=0;i--){
+            if(s.charAt(i)%2 !=0 ){
+                res = s.substring(0,i+1) ;
+                break;
+            }
+        }
+        if(res.isEmpty()) System.out.println("Odd Number doesn't exist");
+        else System.out.print(res);
+    }
     public static void indicesOfSumInArray(String[] args){
         Scanner sc = new Scanner(System.in);
         int len = sc.nextInt();
@@ -1402,6 +1416,33 @@ public class Main {
             }
         }
         System.out.println("No two sum solution");
+    }
+    public static void numberOfConsecutiveElementsInArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String[] s = sc.nextLine().split(" ");
+        int count = 0;
+        int[] res = new int[s.length];
+        for(int i=0;i<s.length;i++){
+             res[i] = Integer.parseInt(s[i]);
+        }
+        Arrays.sort(res);
+        int max = 0;
+        for(int i=0;i<s.length-1;i++){
+            if(res[i]+1 == res[i+1]) count++;
+            else{
+                if(max<count){
+                    max = count;
+                    count = 0;
+                }
+                else if(max == count){
+                    System.out.print(0);
+                    return;
+                }
+            }
+        }
+        if(max>count)System.out.print(max+1);
+        else if(count>max) System.out.print(count+1);
+        else System.out.print(0);
     }
     public static void spiralMatrix(String[] args){
         Scanner sc = new Scanner(System.in);
