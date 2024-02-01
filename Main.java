@@ -1400,6 +1400,19 @@ public class Main {
         if(res.isEmpty()) System.out.println("Odd Number doesn't exist");
         else System.out.print(res);
     }
+    public static void shuffleString(String args[]){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        int[] res = new int[s.length()];
+        for(int i=0;i<s.length();i++) res[i] = sc.nextInt();
+        char[] c = new char[res.length];
+        for(int i=0;i<res.length;i++){
+            char q = s.charAt(i);
+            int index = res[i];
+            c[index] = q;
+        }
+        System.out.print(new String(c));
+    }
     public static void indicesOfSumInArray(String[] args){
         Scanner sc = new Scanner(System.in);
         int len = sc.nextInt();
@@ -1416,6 +1429,25 @@ public class Main {
             }
         }
         System.out.println("No two sum solution");
+    }
+    public static void isomorphic(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        String b = sc.next();
+        for(int i=0;i<b.length();i++){
+            boolean f = true;
+            for(int j=0;j<i;j++){
+                if(b.charAt(i) == b.charAt(j)){
+                    f = false;
+                    break;
+                }
+            }
+            if(f){
+                a = a.replace(""+a.charAt(i),""+b.charAt(i));
+            }
+        }
+        if(a.equals(b)) System.out.print("true");
+        else System.out.print("false");
     }
     public static void numberOfConsecutiveElementsInArray(String[] args){
         Scanner sc = new Scanner(System.in);
