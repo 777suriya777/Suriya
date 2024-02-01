@@ -2670,4 +2670,81 @@ public class Main {
         }
         System.out.print(count);
     }
+    public static void destroyingElementsInArray(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int k=0;k<t;k++){
+            int len = sc.nextInt();
+            int[] arr = new int[len];
+            int max = 0;
+            int in = 0;
+            for(int i=0;i<len;i++){
+                arr[i] = sc.nextInt();
+                if(max<arr[i]){
+                    max = arr[i];
+                    in = i;
+                }
+            }
+            int turn = len;
+            int sum = 0;
+            in = in + 1;
+            for(int i=1;i<=turn;i++){
+                sum+=arr[in]*i + max;
+                in = (in+1)%len;
+            }
+            System.out.println(sum);
+        }
+    }
+    public static void licensePLate(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String l = sc.nextLine();
+        String[] words = sc.nextLine().split(" ");
+        String reg = "[^a-zA-Z]";
+        l = l.replaceAll(reg,"").toLowerCase();
+        int index = 0;
+        int max = 0;
+        for(int i=0;i<words.length;i++){
+            String q = words[i].toLowerCase();
+            boolean flag = false;
+            for(int j=0;j<l.length();j++){
+                flag = false;
+                for(int k=0;k<q.length();k++){
+                    if(l.charAt(j) == q.charAt(k)){
+                        flag = true;
+                        q = q.replaceFirst(""+l.charAt(j),"");
+                        break;
+                    }
+                }
+                if(!flag) break;
+            }
+            if(flag){
+                if(index==0&&max==0){
+                    index = i;
+                    max = words[i].length();
+                }
+                else if(max>words[i].length()){
+                    index = i;
+                    max = words[i].length();
+                }
+            }
+        }
+        System.out.print(words[index]);
+    }
+    public static void christmasAve(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int money = sc.nextInt();
+        int a = sc.nextInt();
+        int b = 0;
+        if(money>a){
+            System.out.println(a);
+            return;
+        }
+        int count = 0;
+        while(a>b){
+            count++;
+            a--;
+            b++;
+        }
+        System.out.println(count);
+    }
 }
