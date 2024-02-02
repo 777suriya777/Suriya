@@ -2849,7 +2849,7 @@ public class Main {
         for(int i =0;i<s;i++){
             if(a[i][1].equals(q)) w.add(a[i][0]);
         }
-        for(int i =0;i<s;i++){
+        for(int i =0;i<w.size();i++){
             String o = w.get(i);
             for(int j=0;j<s;j++){
                 if(a[j][1].equals(o)) count++:
@@ -3062,6 +3062,102 @@ public class Main {
         while(i<l2.size()){
             System.out.print(l2.get(i)+" ");
             i++;
+        }
+    }
+    public static void roman(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int t = sc.next();
+        for(int k=0;k<t;k++){
+            int a = sc.nextInt();
+            if(a>10000){
+                System.out.print("Invalid Input");
+                return;
+            }
+            while(a>0){
+                if(a>=1000){
+                    System.out.print(switchAAA(1000));
+                    a = a - 1000;
+                }
+                else if(a>=500){
+                    System.out.print(swichAAA(500));
+                    a = a - 500;
+                }
+                else if(a>=100){
+                    System.out.print(swichAAA(100));
+                    a = a - 100;
+                }
+                }
+                else if(a>=50){
+                    System.out.print(swichAAA(50));
+                    a = a - 50;
+                }
+                }
+                else if(a>=10){
+                    System.out.print(swichAAA(10));
+                    a = a - 10;
+                }
+                else{
+                    for(int i=9;i>=1;i--){
+                        if(a==i){
+                            System.out.print(switch(i));
+                            a = a - i;
+                        }
+                        if(a==0) return;
+                    }
+                }
+            }
+        }
+    }
+    public static String switchAAA(int c){
+        switch(c){
+            case 1:
+                return "I";
+            case 2:
+                return "II";
+            case 3:
+                return "III";
+            case 4:
+                return "IV";
+            case 5:
+                return "V";
+            case 6:
+                return "VI";
+            case 7:
+                return "VII";
+            case 8:
+                return "VIII";
+            case 9:
+                return "IX";
+            case 10:
+                return "X";
+            case 50:
+                return "L";
+            case 100:
+                return "C";
+            case 500:
+                return "D";
+            case 1000:
+                return "M";
+        }
+    }
+    public static void goatLatin(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String[] s = sc.nextLine().split(" ");
+        String m = "maa";
+        for(int i=0;i<s.length;i++){
+            String q = s[i];
+            if(q.charAt(0)=='a'||q.charAt(0)=='A'||q.charAt(0)=='E'
+              ||q.charAt(0)=='e'||q.charAt(0)=='I'||q.charAt(0)=='i'
+              ||q.charAt(0)=='o'||q.charAt(0)=='O'||q.charAt(0)=='u'
+               ||q.charAt(0)=='U'){
+                System.out.print(q+m+" ");
+                m = m+"a";
+            }
+            else{
+                q = q.substring(1) + q.substring(0,1) + m;
+                System.out.print(q+" ");
+                m = m+"a";
+            }
         }
     }
 }
