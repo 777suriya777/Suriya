@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cademy-Registration Page</title>
+</head>
+<body>
+<form th:action="@{/processRegistrationForm}" th:object="${webUser}" method="POST">
+    <div th:if="${registrationError != null}">
+        <span th:text="${registrationError}"/>
+    </div>
+    <div>
+        <input type = "text" th:field="*{userName}" placeholder="UserName (*)">
+        <ul th:if="${#fields.hasErrors('userName')}">
+            <li th:each="err : ${#fields.errors('userName')}" th:text="${err}"></li>
+        </ul>
+    </div>
+    <br><br>
+    <div>
+    <input type = "text" th:field="*{password}" placeholder="Password (*)">
+        <ul th:if="${#fields.hasErrors('password')}">
+            <li th:each="err : ${#fields.errors('password')}" th:text="${err}"></li>
+        </ul>
+    </div>
+    <br><br>
+    <div>
+    <input type = "text" th:field="*{firstName}" placeholder="First Name (*)">
+        <ul th:if="${#fields.hasErrors('firstName')}">
+            <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"></li>
+        </ul>
+    </div>
+    <br><br>
+    <div>
+    <input type = "text" th:field="*{lastName}" placeholder="Last Name (*)">
+        <ul th:if="${#fields.hasErrors('lastName')}">
+            <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"></li>
+        </ul>
+    </div>
+    <br><br>
+    <div>
+    <input type = "text" th:field="*{email}" placeholder="Email (*)">
+        <ul th:if="${#fields.hasErrors('email')}">
+            <li th:errors="*{email}"></li>
+        </ul>
+    </div>
+    <br><br>
+    <button type="submit">Register</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cademy-Login Page</title>
+</head>
+<body>
+<form th:action="@{/authenticateTheUser}" method="POST">
+    UserName : <input type="text" name="username">
+    <br><br>
+    Password : <input type="password" name="password">
+    <br><br>
+    <input type="submit" value="Submit"/>
+    <hr>
+    <a th:href="@{/showRegistrationForm}">Register New User</a>
+</form>
+</body>
+</html>
