@@ -3160,4 +3160,50 @@ public class Main {
             }
         }
     }
+public static void rotateMatrixElements(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int row = sc.nextInt();
+        int col = sc.nextInt();
+        int t = sc.nextInt();
+        int[][] arr = new int[row][col];
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++) arr[i][j] = sc.nextInt();
+        }
+        for(int i=0;i<t;i++) fun(arr);
+    }
+    public static void fun(int[][] arr){
+        int row = 0,col = 0;
+        int m = arr.length;
+        int n = arr[0].length;
+        while(row<m && col<n){
+            if(row+1 == m || col+1 == n) break;
+            
+            int pre = arr[row+1][n-1];
+            
+            for(int i=n-1;i>=col;i--){
+                int cur = arr[row][i];
+                arr[row][i] = pre;
+                pre = cur;
+            }
+            row++;
+            for(int i=row;i<m;i++){
+                int cur = arr[i][col];
+                arr[i][col] = pre;
+                pre = cur;
+            }
+            col++;
+            for(int i=col;i<n;i++){
+                int cur = arr[m-1][i];
+                arr[m-1][i] = pre;
+                pre = cur;
+            }
+            m--;
+            for(int i=m-1;i>=row;i--){
+                int cur = arr[i][n-1];
+                arr[i][n-1] = pre;
+                pre = cur;
+            }
+            n--;
+        }
+    }
 }
