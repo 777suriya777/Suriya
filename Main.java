@@ -3450,4 +3450,38 @@ public static List<Integer> spiralOrder(int[][] matrix) {
             System.out.print(num + " ");
         }
     }
+    public static void ordinalString(String[] args){
+        String[] s = {"abc","abcd"};
+        int m = 2;
+        BigInteger[][] arr = new BigInteger[s.length][];
+        for(int i=0;i<s.length;i++){
+            arr[i] = new BigInteger[s[i].length()];
+            for(int j=0;j<s[i].length();j++){
+                int o = (int)s[i].charAt(j);
+                arr[i][j] = BigInteger.valueOf(o);
+                arr[i][j] = arr[i][j].pow(m);
+            }
+        }
+        BigInteger res = new BigInteger("0");
+        for(int i=0;i<s.length;i++){
+            BigInteger e = multiply(arr[i]);
+            System.out.println(e);
+            res= res.add(e);
+        }
+        System.out.print(res);
+    }
+    public static BigInteger multiply(BigInteger[] arr){
+        BigInteger res = arr[0];
+        for(int i=1;i<arr.length;i++){
+            res = res.multiply(arr[i]);
+        }
+        return res;
+    }
+    public static BigInteger add(BigInteger[] arr){
+        BigInteger res = arr[0];
+        for(int i=1;i<arr.length;i++){
+            res = res.add(arr[i]);
+        }
+        return res;
+    }
 }
